@@ -6,7 +6,7 @@ public class Person {
  
 	private int id;
 	private String name;
-	private Date dateOfBirth;
+	private Date birthdate;
 	private int height;
 	
 	public int getId() {
@@ -22,10 +22,10 @@ public class Person {
 		this.name = name;
 	}
 	public Date getDateOfBirth() {
-		return dateOfBirth;
+		return birthdate;
 	}
 	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.birthdate = dateOfBirth;
 	}
 	public int getHeight() {
 		return height;
@@ -37,14 +37,14 @@ public class Person {
 		super();
 		this.id = id;
 		this.name = name;
-		this.dateOfBirth = dateOfBirth;
+		this.birthdate = dateOfBirth;
 		this.height = height;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((birthdate == null) ? 0 : birthdate.hashCode());
 		result = prime * result + height;
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -59,10 +59,10 @@ public class Person {
 		if (getClass() != obj.getClass())
 			return false;
 		Person other = (Person) obj;
-		if (dateOfBirth == null) {
-			if (other.dateOfBirth != null)
+		if (birthdate == null) {
+			if (other.birthdate != null)
 				return false;
-		} else if (!dateOfBirth.equals(other.dateOfBirth))
+		} else if (!birthdate.equals(other.birthdate))
 			return false;
 		if (height != other.height)
 			return false;
@@ -77,7 +77,7 @@ public class Person {
 	}
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + ", dateOfBirth=" + dateOfBirth + ", height=" + height + "]";
+		return "Person [id=" + id + ", name=" + name + ", dateOfBirth=" + birthdate + ", height=" + height + "]";
 	}
 	
 }

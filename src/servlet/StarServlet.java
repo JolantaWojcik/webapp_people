@@ -28,7 +28,7 @@ public class StarServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String sortBy = Optional.ofNullable(request.getParameter("sortBy")).orElse("id");
-			request.setAttribute("empsList", peopleService.getPeople(sortBy));
+			request.setAttribute("peopleList", peopleService.getPeople(sortBy));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,4 +1,4 @@
-package connections;
+package service;
 
 import java.sql.Connection;
 
@@ -6,8 +6,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-public class ConnectionUtils {
-	//TODO: usunac
+public abstract class DbService {
 	public Connection connection() throws Exception {
 		Connection conn;
 		Context init = new InitialContext();
