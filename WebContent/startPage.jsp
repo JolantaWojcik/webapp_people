@@ -21,7 +21,7 @@
 					</tr>
 					<tr>
 						<td>Wpisz date</td>
-						<td><input type="text" name="datepicker" /><c:if
+						<td><input type="text" name="birthdate" /><c:if
 								test="${error_date!=null}">
 								<font color="red">${error_date}</font>
 							</c:if></td>
@@ -39,8 +39,13 @@
 					</tr>
 				</table>
 			</form>
+			<form action="showDetails" method="post">
+				<tr>
+					<td colspan="2" align="right"><input type="submit"
+						value="Pokaz raport urodzen" /></td>
+				</tr>
+			</form>
 		</div>
-
 		<div id="resultPage"
 			style="width: 550px; margin-left: auto; margin-right: auto; background-color: #EEEEEE; border: 1px solid">
 			<table style="width: 550px; margin-left: auto; margin-right: auto;"
@@ -58,17 +63,26 @@
 						<td onclick="document.location.href='/webapp05/?sortBy=height'"
 						onmouseover="this.style.cursor='pointer'"
 						onmouseout="this.style.cursor='default'">Wzrost</td>
+						<td>Akcja</td>
 				</tr>
 				<c:forEach items="${peopleList}" var="p">
 					<tr>
-						<td>${p.name}</td>
-						<td>${p.birthdate}</td>
-						<td>${e.age}</td>
-						<td>${e.height}</td>
-						<td><input type="submit" value="Usun" /></td>
+						<td align="center">${p.name}</td>
+						<td align="center">${p.birthdate}</td>
+						<td align="center">${p.age}</td>
+						<td align="center">${p.height}</td>
+						<form action="removePerson" method="post">
+						 <input type="hidden" name="id" value="${p.id}" />
+						<td align="center"><input type="submit" value="Usun" /></td>
+						</form>
 					</tr>
-					<td><input type="submit" value="Zapisz" /></td>
 				</c:forEach>
+				<form action="saveToDrive" method="post">
+				<tr>
+					<td colspan="5" align="center"><input type="submit"
+						value="Zapisz" /></td>
+				</tr>
+				</form>
 			</table>
 		</div>
 	</div>

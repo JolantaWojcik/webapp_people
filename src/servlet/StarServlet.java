@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Person;
 import service.PeopleService;
 
 
@@ -18,6 +21,7 @@ public class StarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private PeopleService peopleService;
+	private Person person;
 
 	@Override
 	public void init() throws ServletException {
@@ -32,6 +36,7 @@ public class StarServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		RequestDispatcher rd = request.getRequestDispatcher("startPage.jsp");
 		rd.forward(request, response);
 	}
@@ -40,5 +45,4 @@ public class StarServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
-
 }

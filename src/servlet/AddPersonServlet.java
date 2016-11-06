@@ -37,7 +37,8 @@ public class AddPersonServlet extends HttpServlet{
 			peopleService
 					.insertEmployee(new Person(-1, request.getParameter("name"), 
 							Date.valueOf(request.getParameter("birthdate")),
-							Integer.parseInt(request.getParameter("height"))));
+							Integer.parseInt(request.getParameter("height")),
+							peopleService.calculateAge(Date.valueOf(request.getParameter("birthdate")))));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

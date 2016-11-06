@@ -17,12 +17,13 @@
 			</tr>
 			<c:forEach items="${birthByMonth}" var="b">
 				<tr>
-					<td onclick="document.location.href='/webapp05/?showPeople=month'">${b.month}</td>
-					<td>${b.number}</td>
+					<td onclick="document.location.href='/webapp05/showDetails=month'">${b.key}</td>
+					 <input type="hidden" name="month" value="${b.key}" />
+					<td>${b.value}</td>
 				</tr>
-				<td><input type="submit" value="Zapisz" /></td>
 			</c:forEach>
 		</table>
+		<td align="center"><input type="submit" value="Zapisz" /></td>
 	</div>
 
 	<div id="detailsPage"
@@ -33,10 +34,10 @@
 					<tr>
 						<td>${p.name}</td>
 						<td>${p.birthdate}</td>
-						<td>${e.age}</td>
-						<td>${e.height}</td>
+						<td>${p.age}</td>
+						<td>${p.height}</td>
+						<td><input type="submit" value="Zapisz" /></td>
 					</tr>
-					<td><input type="submit" value="Zapisz" /></td>
 				</c:forEach>
 			</table>
 </body>
