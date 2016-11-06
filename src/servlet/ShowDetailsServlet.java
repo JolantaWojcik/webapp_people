@@ -46,7 +46,9 @@ public class ShowDetailsServlet extends HttpServlet{
 		request.setAttribute("birthByMonth", ds.birthByMonth(people));
 		
 		String month = request.getParameter("month");
-		request.setAttribute("peopleList", ds.getAllPeopleByMonth(month, people));
+		if(month!=null){
+			request.setAttribute("peopleDetaildList", ds.getAllPeopleByMonth(month, people));	
+		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/subPage.jsp");
 		rd.forward(request, resp);
