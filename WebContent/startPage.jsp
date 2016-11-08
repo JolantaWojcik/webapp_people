@@ -39,8 +39,8 @@
 					</tr>
 				</table>
 			</form>
-			<form action="showDetails" method="post">
-				<tr>
+			<form action="showDetails" method="post" align="right">
+				<tr align="right">
 					<td colspan="2" align="right"><input type="submit"
 						value="Pokaz raport urodzen" /></td>
 				</tr>
@@ -77,10 +77,11 @@
 						</form>
 					</tr>
 				</c:forEach>
-				<form action="saveToDrive" method="post">
+				<form action=""> 
 				<tr>
-					<td colspan="5" align="center"><input type="submit"
-						value="Zapisz" /></td>
+					<td colspan="5" align="center">
+					<input type="hidden" name="save" value="save"/>
+					<input type="submit" value="Zapisz" onclick="window.location.href='/webapp05/';"/></td>
 				</tr>
 				</form>
 			</table>

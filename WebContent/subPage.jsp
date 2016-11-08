@@ -15,30 +15,50 @@
 				<td>Miesiac: </td>
 				<td>Liczba urodzin: </td>
 			</tr>
-				<c:forEach items="${birthByMonth}" var="b">
-					<tr>
-					<td onclick="document.location.href='/webapp05/showDetails'">${b.key}</td>
-						<input type="hidden" name="month" value="${b.key}" />
-						<td>${b.value}</td>
-					</tr>
-				</c:forEach>
+			<c:forEach items="${birthByMonth}" var="b">
+				<tr>
+				<form action="showDetails" method="get">
+					<td>
+					<input type="submit" value="${b.key}" name="month"/>
+					</td>
+					<td>${b.value}</td>
+				</tr>
+			</c:forEach>
+			<form action="">
+				<tr>
+					<td colspan="5" align="center"><input type="hidden"
+						name="saveStatistics" value="save" /> <input type="submit" value="Zapisz"
+						onclick="window.location.href='/webapp05/';" /></td>
+				</tr>
+			</form>
 		</table>
-		<td align="center"><input type="submit" value="Zapisz" /></td>
 	</div>
 
 	<div id="details"
 			style="width: 550px; margin-left: auto; margin-right: auto; background-color: #EEEEEE; border: 1px solid">
 			<table style="width: 550px; margin-left: auto; margin-right: auto;"
 				border="1" cellspacing="0" cellpadding="0">
+				<tr bgcolor="orange">
+				<td>Imie</td>
+				<td>Data urodzenia</td>
+				<td>Wiek</td>
+				<td>Wzrost</td>
+			</tr>
 				<c:forEach items="${peopleDetaildList}" var="p">
 					<tr>
 						<td>${p.name}</td>
 						<td>${p.birthdate}</td>
 						<td>${p.age}</td>
 						<td>${p.height}</td>
-						<td><input type="submit" value="Zapisz" /></td>
 					</tr>
 				</c:forEach>
-			</table>
+			<form action="">
+				<tr>
+					<td colspan="5" align="center"><input type="hidden"
+						name="savePeopleByMonth" value="save" /> <input type="submit" value="Zapisz"
+						onclick="window.location.href='/webapp05/';" /></td>
+				</tr>
+			</form>
+		</table>
 </body>
 </html>

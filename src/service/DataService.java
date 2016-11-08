@@ -26,8 +26,7 @@ public class DataService {
 	
 	public List<Person> getAllPeopleByMonth(String month, List<Person>people) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("LLLL", Locale.getDefault());
-		return people.stream().filter(e -> dateFormat.format(e.getBirthdate())==month)
+		return people.stream().filter(e -> dateFormat.format(e.getBirthdate()).equals(month)) 
 				 .collect(Collectors.toList());
-
 	}
 }

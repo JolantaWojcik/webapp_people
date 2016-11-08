@@ -1,9 +1,13 @@
 package model;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Person {
+public class Person implements Serializable{
  
+	private static final long serialVersionUID = -7330787966483226509L;
 	private int id;
 	private String name;
 	private Date birthdate;
@@ -103,6 +107,14 @@ public class Person {
 	public String toString() {
 		return "Person [id=" + id + ", name=" + name + ", birthdate=" + birthdate + ", height=" + height + ", age="
 				+ age + "]";
+	}
+	
+	private void writeObject(ObjectOutputStream out) throws IOException, ClassNotFoundException {
+		out.defaultWriteObject();
+		out.writeObject(getName());
+		out.writeObject(getBirthdate());
+		out.writeObject(getHeight());
+		out.writeObject(getAge());
 	}
 	
 }

@@ -1,12 +1,17 @@
 package servlet;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,9 +50,30 @@ public class ShowDetailsServlet extends HttpServlet{
 		ds.birthByMonth(people);
 		request.setAttribute("birthByMonth", ds.birthByMonth(people));
 		
+		Map<String, Long> statistics = ds.birthByMonth(people);
+		String saveStc = request.getParameter("saveStatistics");
+		if(saveStc!=null){
+			ObjectOutputStream oos = new ObjectOutputStream
+					(new FileOutputStream("C:/Users/Dell/Desktop/java korki/save_statistics.txt"));
+			oos.writeObject(statistics);
+			oos.close();
+		}
+		
+		//problem z polskimi znakami
 		String month = request.getParameter("month");
+		List<Person> birth_by_month = null;
 		if(month!=null){
 			request.setAttribute("peopleDetaildList", ds.getAllPeopleByMonth(month, people));	
+			birth_by_month = ds.getAllPeopleByMonth(month, people);
+		}
+
+		//beznadziejny kod, musi sie dac zrobic inaczej
+		String save = request.getParameter("savePeopleByMonth");
+		if(save!=null){
+			ObjectOutputStream oos = new ObjectOutputStream
+					(new FileOutputStream("C:/Users/Dell/Desktop/java korki/birth_by_month.txt"));
+			oos.writeObject(birth_by_month);
+			oos.close();
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/subPage.jsp");
