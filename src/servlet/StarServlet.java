@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -50,13 +52,17 @@ public class StarServlet extends HttpServlet {
 		//beznadziejny kod, musi sie dac zrobic inaczej
 		String save = request.getParameter("save");
 		if(save!=null){
+			String path = System.getProperty("user.home");
+			//klient ten plik ma sciagnac.
 			ObjectOutputStream oos = new ObjectOutputStream
-					(new FileOutputStream("C:/Users/Dell/Desktop/java korki/all_people.txt"));
+					(new FileOutputStream(path +"/Downloads/" + "all_users.txt"));
 			oos.writeObject(people);
 			oos.close();
+//			Paths.get(".").toAbsolutePath().normalize().toString();
 		   }
 		
-//		response.getWriter().println("<br>Operator to: " + save + "</br>");
+//		response.getWriter().println("<br>Operator to: " + Paths.get(".").toAbsolutePath().normalize().toString()
+//				+ "</br>");
 //		response.getWriter().println("<br>Operator to: " + people + "</br>");
 		RequestDispatcher rd = request.getRequestDispatcher("startPage.jsp");
 		rd.forward(request, response);

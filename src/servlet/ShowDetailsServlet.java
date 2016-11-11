@@ -27,12 +27,18 @@ import service.PeopleService;
 @WebServlet("/showDetails")
 public class ShowDetailsServlet extends HttpServlet{
 
+	//@Autowired
 	private PeopleService peopleService;
 	private DataService ds;
 	
 	@Override
 	public void init() throws ServletException {
 		peopleService = new PeopleService();
+		//adres bazy
+		//emaile na ktre ma cos wyslac
+		//konfiguracje table
+		//uprawnienia
+		//inne...
 		ds = new DataService();
 	}
 	
